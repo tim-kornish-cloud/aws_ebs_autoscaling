@@ -25,10 +25,6 @@ resource "aws_subnet" "default_subnet" {
   vpc_id = aws_vpc.default_vpc.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-east-1a"
-  # filter {
-  #   name   = "vpc-id"
-  #   values = [data.aws_default_vpc.default_vpc.id]
-  # }
 }
 
 
@@ -36,10 +32,6 @@ resource "aws_subnet" "secondary_subnet" {
   vpc_id = aws_vpc.default_vpc.id
   cidr_block = "10.0.2.0/24"
   availability_zone = "us-east-1b"
-  # filter {
-  #   name   = "vpc-id"
-  #   values = [data.aws_default_vpc.default_vpc.id]
-  # }
 }
 
 # create internet gateway
@@ -103,10 +95,4 @@ resource "aws_vpc_endpoint" "default_vpc_s3_gateway_endpoint" {
     Name = "default-s3-gateway-endpoint"
   }
 }
-
-# output the current region to console
-# output "current_aws_region" {
-#   description = "The name of the current AWS region."
-#   value       = data.aws_region.current.region
-# }
 
