@@ -5,6 +5,7 @@
 resource "aws_security_group" "ssh_http_only" {
   name        = "ssh_http_only"
   description = "Allow ssh and http access"
+  vpc_id      = aws_vpc.default_vpc.id
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]
