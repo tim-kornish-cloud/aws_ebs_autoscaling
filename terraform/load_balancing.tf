@@ -6,7 +6,7 @@
 resource "aws_lb" "tk_lb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.ssh_http_only.id]
-  subnets            = [data.aws_subnet.default_subnet.id]
+  subnets            = [aws_subnet.default_subnet.id, aws_subnet.secondary_subnet.id]
 }
 
 resource "aws_lb_target_group" "tk_lb_target_group" {
