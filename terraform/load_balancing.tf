@@ -6,13 +6,13 @@
 resource "aws_lb" "tk_lb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.ssh_http_only.id]
-  subnets            = data.aws_subnet_ids.default.ids
+  subnets            = [data.aws_subnet.default_subnet.id]
 }
 
 resource "aws_lb_target_group" "tk_lb_target_group" {
   port     = 80
   protocol = "HTTP"
-  vpc_id   = data.aws_vpc.default.id
+  vpc_id   = aws_vpc.default_vpc.id
   health_check {
     path                = "/"
     port                = "traffic-port"

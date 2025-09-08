@@ -4,7 +4,7 @@
 
 resource "aws_autoscaling_group" "tk_autoscale_group" {
   launch_configuration = aws_launch_configuration.tk_lc.name
-  vpc_zone_identifier  = data.aws_subnet_ids.default.ids
+  vpc_zone_identifier  = [data.aws_subnet.default_subnet.id]
   target_group_arns    = [aws_lb_target_group.tk_lb_target_group.arn]
   health_check_type    = "ELB"
   min_size             = var.min_size
