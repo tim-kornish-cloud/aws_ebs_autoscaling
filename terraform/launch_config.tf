@@ -20,19 +20,19 @@ unzip awscliv2.zip
 sudo ./aws/install
 
 # Fetch docker image
-aws s3 cp s3://${aws_s3_bucket.tk_s3_bucket.id}/${aws_s3_bucket_object.tk_bucket_object.id} .
+aws s3 cp s3://${aws_s3_bucket.tk_s3_bucket.id}/${aws_s3_object.tk_bucket_object.id} .
 
 # Load and run image
-docker load -i ./${aws_s3_bucket_object.tk_bucket_object.id}
+docker load -i ./${aws_s3_object.tk_bucket_object.id}
 docker run -dp 80:80 ${var.docker_img_tag}
 
 # Cleanup
 rm awscliv2.zip
-rm ${aws_s3_bucket_object.tk_bucket_object.id}
+rm ${aws_s3_object.tk_bucket_object.id}
 EOF
 
   depends_on = [
-    aws_s3_bucket_object.tk_bucket_object,
+    aws_s3_object.tk_bucket_object,
   ]
   # Required when using a launch configuration with an auto scaling group.
   # https://www.terraform.io/docs/providers/aws/r/launch_configuration.html
