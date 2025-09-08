@@ -2,7 +2,7 @@
 # CreatedDate: 9/08/2025
 # Description: set up launch template for ec2 nodes
 
-resource "aws_launch_configuration" "tk_lc" {
+resource "aws_launch_template" "tk_lc" {
   image_id             = var.ami_al2_ecs
   instance_type        = "t3.micro"
   key_name             = "ebs-load-balancing"
