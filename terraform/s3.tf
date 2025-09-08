@@ -12,7 +12,7 @@ resource "aws_s3_bucket_public_access_block" "tk_access_block" {
   block_public_policy = true
 }
 
-resource "aws_s3_bucket_object" "tk_bucket_object" {
+resource "aws_s3_object" "tk_bucket_object" {
   bucket = aws_s3_bucket.tk_s3_bucket.id
   key    = var.docker_img_tar_file
   source = "../${var.docker_img_tar_file}"
